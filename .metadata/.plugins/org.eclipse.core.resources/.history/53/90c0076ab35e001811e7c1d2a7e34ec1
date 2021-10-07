@@ -1,0 +1,6 @@
+package projet_java;
+
+public class Stagiere {
+	 private String CIN, id_Etudiant ;
+
+}

@@ -1,0 +1,13 @@
+package projet_java;
+
+public class GestionStage {
+	String s;
+	public GestionStage()
+	{
+		
+	}
+	public static void main(String [] args){
+		GestionStage fen =new GestionStage();
+	}
+
+}

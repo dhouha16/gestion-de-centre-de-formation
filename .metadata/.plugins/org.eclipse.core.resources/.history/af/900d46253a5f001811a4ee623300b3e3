@@ -1,0 +1,103 @@
+package projet_java;
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
+import javax.swing.plaf.metal.MetalIconFactory;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Map;
+
+public class Aceuille extends JFrame {
+	
+	private static final long serialVersionUID = 1L;
+	JPanel p1,po1;
+	
+	JMenuBar mb;
+	JToolBar tool;
+	JLabel texte1,texte2,texte3,esp,ad,stg ,t1;
+	//ImageIcon;
+	JButton con,con1 ;
+	JTabbedPane onglet;
+	JList liste1,liste2;
+	
+
+	public Aceuille(String s)
+	{super(s);
+	
+	 
+	//pour que la page ouvrir sur plien ecran
+	this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+	
+   this.setBackground(new Color(251, 196, 189));
+	//Toolkit renvoie la taille de l’écran sous la forme d’unobjet Dimension.
+    Toolkit kit = Toolkit.getDefaultToolkit();
+    Dimension dimensionEcran = kit.getScreenSize();
+    int largeur = dimensionEcran.width;
+    int hauteur = dimensionEcran.height;
+    setBounds((largeur-300)/2, (hauteur-200)/2, 300, 200);
+    setIconImage(kit.getImage("LogoIset2 (1).png"));
+   
+    JPanel p =new JPanel();
+	p.setLayout(new FlowLayout());
+	p.setBackground(new Color(251, 196, 189));
+	
+	this.setJMenuBar(mb);
+	this.setLayout(new BorderLayout());
+	this.add(p, BorderLayout.NORTH);
+	this.setLayout(new BorderLayout());
+	getContentPane (). add(p) ;
+
+    t1=new JLabel("<html>STAGE DE FORMATION PROFESSIONNELLE INITIALE EN ALTERNANCE FORMATION CONTINUE. <br> "
+    		+ "DÉCOUVERTE EN COURS ÉTUDES OFFRE DE STATGE STAGE REMUNÉRÉ PÔLE EMPLOI.\n <br>"
+    		+ "<br>"
+    		+ "<br>"
+    		+ "Stage de Formation vous donne accès à votre stage de formation.<br>"
+    		+ "Avec Stage de Formation trouvez votre stage de formation adapté à vos aptitudes et vos objectifs quant à votre avenir professionnel <br>"
+    		+ "Un stage de formation est par définition une période apprentissage, de formation et de perfectionnement dans une entreprise ou des services privés<br> "
+    		+ " et publics. Le stage de formation est une autre forme de contrat emploi dans un cadre légal bien spécifique dont<br>"
+    		
+    		
+    		+ "et à la réussite de tous ses projets.<html>");
+    t1.setFont(t1.getFont().deriveFont(Font.BOLD));
+    Font font5 = new Font("Arial",Font.BOLD,12);
+    t1.setFont(font5);
+    t1.setForeground(new Color(3,34,76));
+    t1.setBounds(200, 200 , 400, 50);
+	 esp=new JLabel("   bienvenue dans notre centre de stage");
+	    esp.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,40));
+	    esp.setForeground(new Color(225,102,102));
+	    esp.setBounds(190, 50, 400, 50);
+	   
+	    p.add(esp);
+	    p.add(t1); 
+	/*   
+	    //centre
+	    
+	    JPanel panel2 =new JPanel();
+		
+		ad=new JLabel("   Espace adimnistateur");
+	    ad.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,40));
+	    ad.setForeground(new Color(225,102,102));
+	    ad.setBounds(120, 50, 200, 50);
+	   
+		panel2.add(ad);
+		panel2.add(liste2);
+		
+		this.add(panel2, BorderLayout.CENTER);*/
+	
+
+    
+    
+
+	}
+	public static void main (String []args){
+		JFrame frame = new Aceuille ("aceuille");
+		frame . setVisible ( true ); 
+	}
+}

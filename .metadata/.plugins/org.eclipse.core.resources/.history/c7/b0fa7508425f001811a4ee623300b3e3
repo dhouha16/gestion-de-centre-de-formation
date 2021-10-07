@@ -1,0 +1,300 @@
+package projet_java;
+import javax.swing.*;
+
+import com.mysql.jdbc.PreparedStatement;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+public class ModifierStagiere extends JFrame implements ActionListener {
+private static final long serialVersionUID = 1L;
+	
+	JPanel c;
+	JLabel l1,l2,l3 , l4,l5,l6,l7,l8,img7;
+	JButton b1,b2,b3;
+	JTextField  tf2, tf3, tf4 ,tf5 ,tf6 ,tf8 ;
+	String[] stagee1= {"stagein itiation ","stage perfectionnement", "stage de fin d'etude"};
+	JComboBox stagee, formation;
+	String[] formation1 = {"formation1"};
+	String s2;
+	public ModifierStagiere (String s)
+	{super(s);
+	this.setLocation(300, 50);
+	this.setSize(710, 630);
+	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	this.setLayout(null);
+	 c=(JPanel)this.getContentPane();
+	 img7 = new JLabel();
+	 img7.setIcon(new ImageIcon("glare_shine_background_spot_69090_1366x768.jpg"));
+	 img7.setBounds(0, 0, 700, 700);
+	
+	
+	
+	
+	l1=new JLabel(" Modifier stagiere");	
+	l1.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,40));
+    l1.setForeground(new Color(225,102,178));
+	l1.setBounds(210, 35, 400, 30);
+	
+	l2 = new JLabel ("cin : ");
+	tf2 = new JTextField();
+	l2.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,20));
+	l2.setForeground(new Color(0,0,51));
+	l2.setBounds(70, 150,100,20);
+	tf2.setBounds(130, 150,100,20);
+	
+	
+	l3 = new JLabel ("nom : ");
+	tf3 = new JTextField();
+	l3.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,20));
+	l3.setForeground(new Color(0,0,51));
+	l3.setBounds(60, 200,100,20);
+	tf3.setBounds(130, 200,100,20);
+	
+	
+	l4 = new JLabel ("prenom : ");
+	tf4 = new JTextField();
+	l4.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,20));
+	l4.setForeground(new Color(0,0,51));
+	l4.setBounds(40, 250,100,20);
+	tf4.setBounds(130, 250,100,20);
+	
+	
+	
+	l5= new JLabel ("email: ");
+	tf5 = new JTextField();
+	l5.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,18));
+	l5.setForeground(new Color(0,0,51));
+	l5.setBounds(65, 300,150,20);
+	tf5.setBounds(130, 300,100,20);
+	
+	
+	
+	l6 = new JLabel ("Age  : ");
+	tf6 = new JTextField();
+	l6.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,18));
+	l6.setForeground(new Color(0,0,51));
+	l6.setBounds(70, 350,150,22);
+	tf6.setBounds(130, 350,100,20);
+	
+	
+    l7 = new JLabel ("type de stage : ");
+    l7.setBounds(400, 200, 100, 20);
+    l7.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,18));
+	l7.setForeground(new Color(0,0,51));
+	stagee = new JComboBox(stagee1);
+	stagee.setBounds(490, 195, 200, 30);
+	stagee.addActionListener(this);
+	l8 = new JLabel ("Niveau  : ");
+    l8.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,18));
+	l8.setForeground(new Color(0,0,51));
+	l8.setBounds(400, 250, 100, 25);
+	c.add(l8);
+	 formation= new JComboBox();
+	for (String i : formation1)
+	{
+		formation.addItem(i);
+	}
+	formation.setBounds(490, 250, 170, 25);
+	c.add(formation);
+	
+	b1=new JButton ("Modifier");
+	b1.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,20));
+    b1.setBackground(new Color(102,0,51));
+    b1.setForeground(Color.WHITE);
+    b1.setBounds(450,500,150,40);
+
+	b2=new JButton ("Annuler");
+	b2.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,20));
+    b2.setBackground(new Color(102,0,51));
+    b2.setForeground(Color.WHITE);
+    b2.setBounds(270,500,150,40);
+    
+	b3=new JButton ("Retour");
+	b3.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,20));
+    b3.setBackground(new Color(102,0,51));
+    b3.setForeground(Color.WHITE);
+    b3.setBounds(80,500,150,40);
+    
+    b1.addActionListener(this);
+    b2.addActionListener(this);
+    b3.addActionListener(this);
+    
+
+    
+	c.add(l1);
+	c.add(l4);
+	c.add(tf4);
+	c.add(l2);
+	c.add(tf2);
+	c.add(l3);
+	c.add(tf3);
+	
+	c.add(l5);
+	c.add(l7);
+	c.add(stagee);
+	c.add(b1);
+	c.add(b2);
+	c.add(b3);
+	
+	c.add(tf5);
+	c.add(l6);
+	c.add(tf6);
+	
+	c.add(img7);
+	
+	
+	
+	
+	this.setVisible(true);
+	
+	}
+	
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+		  if (e.getSource()==stagee)
+		 {
+		  	if (stagee.getSelectedIndex()==0)
+			{
+				formation.removeAllItems();
+				String[] Niveau = {" html/css","algorithme","c"};
+				for (String i : Niveau)
+				{
+					formation.addItem(i);
+				}
+			}
+			if(stagee.getSelectedIndex()==1)
+			{				
+				formation.removeAllItems();
+				String[] Niveau = {"java","php","jquery"};
+				for (String i : Niveau)
+				{
+					formation.addItem(i);
+				}
+			}
+			if(stagee.getSelectedIndex()==2)
+			{
+				
+				formation.removeAllItems();
+				
+				String[]Niveau = {"androwide","Synfony 3","c#"};
+				
+				for (String i : Niveau)
+				{
+					formation.addItem(i);
+				}
+			}	
+			
+		 }
+			if (e.getSource()==b3)
+			{GestionStage interface1=new GestionStage();
+			GestionStage.main(null);
+			
+			}
+			if(e.getSource()==b2)
+			{
+				tf2.setText("");
+				tf3.setText("");
+				tf4.setText("");
+				tf5.setText("");
+				tf6.setText("");
+				stagee.setSelectedIndex(0);
+				formation.setSelectedItem(0);
+				
+			}
+			if (e.getSource() == b1) {
+				/*if(tf2.getText().equals("")) 
+	                  s2= "Entrer le cin de stagiere";
+	               
+	                  
+	                  JOptionPane.showMessageDialog (null,s2,"Verification", JOptionPane. ERROR_MESSAGE) ; 
+	                  tf2.setText("");
+	                 
+	              }
+				else  */
+				
+			//Connect("UPDATE stagiere SET non='"+tf3.getText()+"'"+" prenom='"+tf4.getText()+"'"+" cin ='"+tf2.getText()+"'"+" email='"+tf5.getText()+"'"+ "age ='"+tf6.getText()+"' where cin='"+tf2.getText()+"'");
+			
+			// **************************************
+						System.out.println(tf2.getText() + " " + tf3.getText() + " " + tf4.getText() + " " + tf5.getText() + " "
+								+ tf6.getText() + "" );
+						
+					
+							ConnectionBD c = new ConnectionBD ();
+							String updatestagiere = "UPDATE stagiere SET nom=? , prenom=? , cin=? , email=? , age=?  ";
+
+							try {
+								PreparedStatement statement = (PreparedStatement) c.con.prepareStatement(updatestagiere);
+								statement.setString(1, tf2.getText());
+								statement.setString(2,tf3.getText());
+								statement.setInt(3, Integer.parseInt( tf4.getText()));
+								statement.setString(4,tf5.getText());
+								statement.setInt(5,  Integer.parseInt( tf6.getText()));
+								
+//								statement.setString(7,  tf5.getText());
+
+								statement.execute();
+								System.out.println("le stagiere est modifier!");
+
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								System.out.println("sql exception!!");
+								e1.printStackTrace();
+							
+						
+	}
+					
+//					********************************************
+					
+					
+					
+		
+	
+	
+				
+	
+
+	
+/*	public void Connect(String req){
+				 Connection cn1;
+				Statement stm;
+			
+				try{
+				Class.forName("com.mysql.jdbc.Driver");
+				System.out.println("driver reussi");
+				
+					 cn1= DriverManager.getConnection("jdbc:mysql://localhost/stage","root","");
+				
+					System.out.println("connexion reussite");
+					Statement stat=cn1.createStatement();
+					stat.execute(req);
+					JOptionPane.showMessageDialog(null,"la formation est selectionné avec suceé");
+			}catch(Exception ex){
+				JOptionPane.showMessageDialog(null,ex.getMessage());
+			}
+			}*/
+			
+			
+		
+			
+
+	
+	
+	
+
+	public static void main(String [] args ){
+		ModifierStagiere st=new ModifierStagiere("modifier stagiere");
+	}
+
+
+	
+
+
+}

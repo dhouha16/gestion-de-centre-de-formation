@@ -1,0 +1,91 @@
+package projet_java;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+public class Test extends JFrame {
+	   
+	
+	public Test() {
+	        super();
+	 
+	        setTitle("JTable basique dans un JPanel");
+	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    
+	        
+	        
+	        
+	        
+	        Connection con=null;
+
+			try
+			{ Class.forName("com.mysql.jdbc.Driver");
+			con =DriverManager.getConnection("jdbc:mysql://localhost/stage","root","");
+			Statement stm =con.createStatement();		
+			String req = "SELECT nom,prenom,email,age FROM stagiere";
+		      
+		       ResultSet rows = stm.executeQuery(req);
+		       
+		       
+		       Object[] tempRow;
+		       while(rows.next()){
+		      	 tempRow=new Object[]{rows.getString(1), rows.getString(2),rows.getString(3),rows.getInt(4)};	
+		      	dTableModel.addRow(tempRow);
+		      	table.setModel(dTableModel);
+		      	System.out.println("le stagiere"+tempRow);
+		       }
+		       }
+			catch(SQLException sqle)
+			{ //JOptionPane.showMessageDialog(null, sqle.getMessage(),"Erreur",JOptionPane.WARNING_MESSAGE);
+				sqle.printStackTrace();} 
+			
+			catch(ClassNotFoundException cnx)
+			{//JOptionPane.showMessageDialog(null, cnx.getMessage(),"Erreur",JOptionPane.WARNING_MESSAGE);
+				cnx.printStackTrace();
+				} 
+
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	       /* Object[][] donnees = {
+	                {"Johnathan", "Sykes", Color.red, true, "TENNIS"},
+	                {"Nicolas", "Van de Kampf", Color.black, true, "FOOTBALL"},
+	                {"Damien", "Cuthbert", Color.cyan, true, "RIEN"},
+	                {"Corinne", "Valance", Color.blue, false, "NATATION"},
+	                {"Emilie", "Schrödinger", Color.magenta, false, "FOOTBALL"},
+	               
+	        };*/
+	 
+	        String[] entetes = {"Prénom", "Nom", "Couleur favorite", "Homme", "Sport"};
+	 
+	        JTable tableau = new JTable() , entetes);
+	 
+	        getContentPane().add(tableau.getTableHeader(), BorderLayout.NORTH);
+	        getContentPane().add(tableau, BorderLayout.CENTER);
+	        getContentPane().add(new JScrollPane(tableau));
+	 
+	        pack();
+	}
+
+	    public static void main(String[] args) {
+	       Test t= new Test();
+	       t.setVisible(true);
+	        
+	    }
+}
+
+

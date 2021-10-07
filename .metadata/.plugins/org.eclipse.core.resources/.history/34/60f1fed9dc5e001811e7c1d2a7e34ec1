@@ -1,0 +1,12 @@
+package projet_java;
+
+public class SupprimerStage {
+public SupprimerStage(){
+		
+	}
+	public static void main(String [] args ){
+		SupprimerStage st=new SupprimerStage();
+	}
+
+
+}

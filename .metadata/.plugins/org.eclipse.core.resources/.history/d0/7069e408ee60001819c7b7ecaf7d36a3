@@ -1,0 +1,35 @@
+package projet_java;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+public class ListerStagiere extends JFrame{
+	
+
+	public static void main(String [] args) throws ClassNotFoundException, SQLException{
+		Connection con=null;
+
+		
+		 Class.forName("com.mysql.jdbc.Driver");
+		con =DriverManager.getConnection("jdbc:mysql://localhost/stage","root","");
+		Statement stm =con.createStatement();		
+		String req = "SELECT nom,prenom,email,age FROM stagiere";
+	      
+	       ResultSet rows = stm.executeQuery(req);
+	       
+	       
+	     //  Object[] tempRow;
+	       while(rows.next()){
+	    	   System.out.println({rows.getString(1), rows.getString(2),rows.getString(3),rows.getInt(4)});;	
+	      	//dTableModel.addRow(tempRow);
+	
+}
+	}
+}

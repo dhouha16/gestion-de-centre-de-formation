@@ -1,0 +1,90 @@
+package projet_java;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JFrame; 
+import javax.swing.JPanel; 
+import javax.swing.JScrollPane; 
+import javax.swing.JTable; 
+import java.awt.Dimension; 
+import java.awt.GridLayout; 
+import java.awt.event.MouseAdapter; 
+import java.awt.event.MouseEvent; 
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+public class ListerStagiere extends JFrame{
+	private boolean DEBUG = false; 
+	public ListerStagiere(){
+		super(); 
+
+		String[] columnNames = {"nom", 
+		"prenom", 
+		"email", 
+		"cin", 
+		"age"}; 
+
+		Object[][] data = { 
+		{"Kathy", "Smith", 
+		"Snowboarding", new Integer(5), new Boolean(false)}, 
+		{"John", "Doe", 
+		"Rowing", new Integer(3), new Boolean(true)}, 
+		{"Sue", "Black", 
+		"Knitting", new Integer(2), new Boolean(false)}, 
+		{"Jane", "White", 
+		"Speed reading", new Integer(20), new Boolean(true)}, 
+		{"Joe", "Brown", 
+		"Pool", new Integer(10), new Boolean(false)} 
+		}; 
+		
+		
+		
+		final JTable table = new JTable(data, columnNames); 
+		table.setPreferredScrollableViewportSize(new Dimension(500, 70)); 
+		table.setFillsViewportHeight(true); 
+
+		if (DEBUG) { 
+		table.addMouseListener(new MouseAdapter() { 
+		public void mouseClicked(MouseEvent e) { 
+		printDebugData(table); 
+		}
+		JScrollPane scrollPane = new JScrollPane(table); 
+		this.add(scrollPane); 
+		} 
+		private void printDebugData(JTable table) { 
+			int numRows = table.getRowCount(); 
+			int numCols = table.getColumnCount(); 
+			javax.swing.table.TableModel model = table.getModel(); 
+
+
+	
+		}); 
+		} 
+	}
+	
+
+	public static void main(String [] args) throws ClassNotFoundException, SQLException{
+		Connection con=null;
+
+		
+		 Class.forName("com.mysql.jdbc.Driver");
+		con =DriverManager.getConnection("jdbc:mysql://localhost/stage","root","");
+		Statement stm =con.createStatement();		
+		String req = "SELECT nom,prenom,email,age FROM stagiere";
+	      
+	       ResultSet rows = stm.executeQuery(req);
+	       
+	       
+	     //  Object[] tempRow;
+	       while(rows.next()){
+	    	   System.out.println("nom:"+rows.getString(1)+", "+rows.getString(2)+","+rows.getString(3)+","+rows.getInt(4)+");
+	      	//dTableModel.addRow(tempRow);
+	
+}
+	}
+}

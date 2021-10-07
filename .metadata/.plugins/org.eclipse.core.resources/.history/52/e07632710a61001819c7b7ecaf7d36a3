@@ -1,0 +1,39 @@
+package projet_java;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+public class Test extends JFrame {
+	   
+	ConnectionBD con =new ConnectionBD();
+	Statement stm;
+	DefaultTableModel dTableModel =new DefaultTableModel();
+	
+	public Test() {
+	        initComponents() ;
+	        dTableModel.addColumn("nom"); 
+	        dTableModel.addColumn("prenom"); 
+	        dTableModel.addColumn("email"); 
+	        dTableModel.addColumn("cin"); 
+	       
+	        try{
+	        	
+	        	 String req = "SELECT nom,prenom,email,cin FROM stagiere";
+	        	ResultSet rows=stm.executeQuery(req);
+	        	  while(rows.next()){
+	        		  dTableModel.addRow(new Object[]{rows.getString("nom"), rows.getString("prenom"),rows.getString("email"),rows.getInt("cin")});	}
+	        	  }     	
+	        catch(Exception e){  }
+	table.setModel(dTableModel);
+	}
+	        
+	 
+	       

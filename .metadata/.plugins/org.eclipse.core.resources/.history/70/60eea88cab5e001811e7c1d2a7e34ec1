@@ -1,0 +1,173 @@
+package projet_java;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.*;
+import javax.swing.*;
+
+public class GestionStage extends JFrame   {
+private static final long serialVersionUID = 1L;
+	
+	JPanel c;
+	JLabel l1,l2,img1,img2,img3,img4,img5,img6,img7;
+	ImageIcon image1,image2,image3,image4,image5,image6;
+	JButton b1,b2,b3,b4,b5,b6,b8;
+	String s;
+	public GestionStage()
+	{
+	
+		this.setLocation(300, 50);
+		this.setSize(710, 630);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setLayout(null);
+		c=(JPanel)this.getContentPane();
+		 img7 = new JLabel();
+		 img7.setIcon(new ImageIcon("glare_shine_background_spot_69090_1366x768.jpg"));
+		 img7.setBounds(0, 0, 700, 700);
+		
+		c.add(img7);
+		
+		l1=new JLabel(" Gestion satgiere");	
+		l1.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,40));
+	    l1.setForeground(new Color(225,102,178));
+		l1.setBounds(210, 35, 400, 30);
+
+		
+	 
+	    l2=new JLabel("Espace admin");
+	    l2.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,40));
+	    l2.setForeground(new Color(225,102,178));
+		l2.setBounds(140, 70, 400, 50);
+		c.add(l1);
+		c.add(l2);
+		
+		
+		b1=new JButton("lister stagiere");
+		b1.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,15));
+	    b1.setBackground(new Color(102,0,51));
+	    b1.setForeground(Color.WHITE);
+		b1.setBounds(3,280,210,30);
+		img1=new JLabel();                                                                                          
+		image1 = new ImageIcon("icons8-carnet-d'adresses-100.png");    
+		img1.setIcon( image1 );
+		img1.setBounds(50,180,100,100);
+		c.add(b1);
+		c.add(img1);
+
+		
+		
+		b2=new JButton("modifier satgiere");
+		b2.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,15));
+	    b2.setBackground(new Color(102,0,51));
+	    b2.setForeground(Color.WHITE);
+		b2.setBounds(250,280,210,30);
+		img2=new JLabel();                                                                                          
+		image2 = new ImageIcon("icons8-heures-supplémentaires-100.png");    
+		img2.setIcon( image2 );    
+		img2.setBounds(300,180,100,100);
+		c.add(b2);
+		c.add(img2);
+		
+		   
+		
+		
+
+		b3=new JButton("supprimer stagiere");
+		b3.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,15));
+	    b3.setBackground(new Color(102,0,51));
+	    b3.setForeground(Color.WHITE);
+		b3.setBounds(500,280,210,30);
+		img3=new JLabel();                                                                                          
+		image3 = new ImageIcon("icons8-invitation-100 - Copie - Copie - Copie.png");    
+		img3.setIcon( image3 ); 
+		img3.setBounds(550,180,100,100);
+		c.add(b3);
+		c.add(img3);
+
+		
+	/*	b5=new JButton("Absences");
+		b5.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,15));
+	    b5.setBackground(new Color(102,0,51));
+	    b5.setForeground(Color.WHITE);
+		b5.setBounds(150,450,210,30);
+		img5=new JLabel();                                                                                          
+		image5 = new ImageIcon("icons8-evénement-refusé-100.png");    
+		img5.setIcon( image5 ); 
+		img5.setBounds(200,350,100,100);
+		c.add(b5);
+		c.add(img5);
+		
+		b6=new JButton("Notes");
+		b6.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,15));
+	    b6.setBackground(new Color(102,0,51));
+	    b6.setForeground(Color.WHITE);
+		b6.setBounds(370,450,210,30);
+		img6=new JLabel();                                                                                          
+		image6 = new ImageIcon("icons8-liste-de-choses-à-faire-100 - Copie - Copie.png");    
+		img6.setIcon( image6 );  
+		img6.setBounds(420,350,100,100);
+		c.add(b6);
+		c.add(img6);*/
+		c.add(img7);
+		b8=new JButton("Déconnexion");
+		b8.setFont(new Font("TimesRoman",Font.BOLD+Font.ITALIC,15));
+	    b8.setBackground(new Color(102,0,51));
+	    b8.setForeground(Color.WHITE);
+		b8.setBounds(0,0,120,20);
+	//	b8.addActionListener(this);
+		c.add(b8);
+		
+	/*	b1.addActionListener(this);
+		b2.addActionListener(this);
+		b3.addActionListener(this);
+		b5.addActionListener(this);
+		b6.addActionListener(this);*/
+		
+		
+		this.setVisible(true);
+		
+			
+			
+			
+			
+		}
+		/*
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource()==b1)
+			{GestionCours ge=new GestionCours("Gestion des Cours");
+			ge.setVisible(true);
+			dispose();		
+			}
+			if(e.getSource()==b5)
+			{AbsProf ge=new AbsProf("Gestion des Absences");
+			ge.setVisible(true);
+			dispose();		
+			}
+			if(e.getSource()==b6)
+			{GestionNote ge=new GestionNote("Gestion des Notes");
+			ge.setVisible(true);
+			dispose();		
+			}
+			if (e.getSource()==b8)
+			{accueil interface1=new accueil("IsimmBook");
+				interface1.setVisible(true);
+				dispose();
+			
+			}
+			
+			
+		}
+			
+		
+	}*/
+	
+	public static void main(String [] args){
+		GestionStage fen =new GestionStage();
+		fen.setVisible(true);
+	}
+
+		
+	
+}
